@@ -9,6 +9,8 @@
                 </li>
             @endif
 
+            
+
             @if ($paginator->hasMorePages())
                  <li class="page-item"><a class="page-link" href="{{ $paginator->nextPageUrl() }}">Next</a></li>
             @else

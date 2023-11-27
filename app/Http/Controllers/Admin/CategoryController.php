@@ -20,7 +20,14 @@ class CategoryController extends Controller
 
     public function create()
     {
-        return view("admin.categories.create-update");
+        $categories = Category::all();
+
+        return view("admin.categories.create-update", compact("categories"));
+    }
+
+    public function store(Request $request)
+    {
+        dd($request->all());
     }
 
     public function changeStatus(Request $request)
@@ -47,4 +54,17 @@ class CategoryController extends Controller
         return redirect()->route("category.index");
 
     }
+
+    public function changeFeatureStatus(Request $request)
+    {
+
+    }
+
+    public function delete(Request $request)
+    {
+
+    }
+
+    public function edit
+
 }
