@@ -7,7 +7,8 @@ use App\Http\Requests\CategoryStoreRequest;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Psy\Util\Str;
+use Illuminate\Support\Str;
+//use Psy\Util\Str;
 
 
 class CategoryController extends Controller
@@ -56,6 +57,7 @@ class CategoryController extends Controller
         }
         alert()->success('Başarılı', " Kategori kaydedildi")->showConfirmButton("Tamam", "#308d6")->autoClose(5000);
         return redirect()->back();
+
     }
 
     public function slugCheck(string $text)
@@ -140,6 +142,38 @@ class CategoryController extends Controller
         }
 
         return view("admin.categories.create-update", compact("category", "categories"));
+    }
+
+    public function update(CategoryStoreRequest $request)
+    {
+
+        $slug = Str::slug($request->slug);
+        $slugCheck = $this->slugCheck($slug);
+
+        $category                  = Category::find($request->id );
+        $category->name            = $request->name;
+        if ((!is_null($slugCheck) && $slugCheck->id) || is_null($slugCheck))
+        {
+            $category->slug = $slug;
+        }
+        else if (!is_null($slugCheck) && $slugCheck->id != $category->id)
+        {
+            $category->slug = Str::slug($slug . time());
+        }
+
+        $category->description     = $request->description;
+        $category->status          = $request->status ? 1 : 0;
+        $category->parent_id       = $request->parent_id;
+        $category->feature_status  = $request->feature_status ? 1 : 0;
+        $category->seo_keywords    = $request->seo_keywords;
+        $category->seo_description = $request->seo_description;
+//        $category->user_id         = random_int(1, 10);
+        $category->order           = $request->order;
+
+        $category->save();
+
+        alert()->success('Başarılı', " Kategori kaydedildi")->showConfirmButton("Tamam", "#308d6")->autoClose(5000);
+        return redirect()->route("category.index");
     }
 
 }
