@@ -68,8 +68,7 @@
                             </td>
                             <td>
                                 <div class="d-flex">
-{{--                                    <a href="{{ route('categories.edit', ['id' => $category->id]) }}"--}}
-                                    <a href="javascript:void(0)"
+                                    <a href="{{ route('categories.edit', ['id' => $category->id]) }}"
                                        class="btn btn-warning btn-sm">
                                         <i class="material-icons ms-0">edit</i>
                                     </a>
