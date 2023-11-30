@@ -4,16 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CategoryController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+////////////////////////////////////////////////////////
+
+Route::prefix("admin")
+//    ->middleware("language")
+    ->group(function ()
+{
 
 Route::get('/', function () {
     return view('admin.index');
@@ -30,3 +26,6 @@ Route::post("categories/change-feature-status", [CategoryController::class, "cha
 Route::post("categories/delete", [CategoryController::class, "delete"])->name("categories.delete");
 Route::get("categories/{id}/edit", [CategoryController::class, "edit"])->name("categories.edit")->whereNumber("id");
 Route::post("categories/{id}/edit", [CategoryController::class, "update"])->whereNumber("id");
+
+});
+

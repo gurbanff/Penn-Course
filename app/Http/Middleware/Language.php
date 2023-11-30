@@ -16,7 +16,14 @@ class Language
     public function handle(Request $request, Closure $next): Response
     {
 
+        $defaultLangDB = 'tr';
 
+        $lang = app()->getLocale();
+
+        if($lang != $defaultLangDB)
+        {
+            app()->setLocale($defaultLangDB);
+        }
 
         return $next($request);
     }
