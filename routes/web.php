@@ -3,17 +3,26 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Auth\LoginController;
 
 ////////////////////////////////////////////////////////
 
-Route::prefix("admin")
-//    ->middleware("language")
-    ->group(function ()
+// Login
+Route::get("/login", [LoginController::class, 'showLogin'])->name("login");
+Route::post("/login", [LoginController::class, 'login']);
+Route::post("/logout", [LoginController::class, "logout"])->name("logout");
+
+Route::get("/register", [LoginController::class, 'showRegister'])->name("register");
+Route::post("/register", [LoginController::class, 'register']);
+
+// End Login
+
+Route::prefix("admin")->middleware("auth")->group(function ()
 {
 
 Route::get('/', function () {
     return view('admin.index');
-})->name('home');
+})->name('admin.index');
 
 Route::get("articles", [ArticleController::class, "index"])->name("article.index");
 Route::get("articles/create", [ArticleController::class, "create"])->name("article.create");
@@ -29,3 +38,6 @@ Route::post("categories/{id}/edit", [CategoryController::class, "update"])->wher
 
 });
 
+Route::get('/', function () {
+    return view('admin.index');
+})->name('home');

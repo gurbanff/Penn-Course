@@ -1,3 +1,4 @@
+
 <div class="app-header">
                 <nav class="navbar navbar-light navbar-expand-lg">
                     <div class="container-fluid">
@@ -68,14 +69,6 @@
                                     </li>
                                 @endif
                                 <li class="nav-item hidden-on-mobile">
-                                    <a class="nav-link language-dropdown-toggle" href="#" id="languageDropDown" data-bs-toggle="dropdown"><img src="../assets/images/flags/us.png" alt=""></a>
-                                        <ul class="dropdown-menu dropdown-menu-end language-dropdown" aria-labelledby="languageDropDown">
-                                            <li><a class="dropdown-item" href="#"><img src="../assets/images/flags/germany.png" alt="">German</a></li>
-                                            <li><a class="dropdown-item" href="#"><img src="../assets/images/flags/italy.png" alt="">Italian</a></li>
-                                            <li><a class="dropdown-item" href="#"><img src="../assets/images/flags/china.png" alt="">Chinese</a></li>
-                                        </ul>
-                                </li>
-                                <li class="nav-item hidden-on-mobile">
                                     <a class="nav-link nav-notifications-toggle" id="notificationsDropDown" href="#" data-bs-toggle="dropdown">4</a>
                                     <div class="dropdown-menu dropdown-menu-end notifications-dropdown" aria-labelledby="notificationsDropDown">
                                         <h6 class="dropdown-header">Notifications</h6>
@@ -93,60 +86,26 @@
                                                     </div>
                                                 </div>
                                             </a>
-                                            <a href="#">
-                                                <div class="notifications-dropdown-item">
-                                                    <div class="notifications-dropdown-item-image">
-                                                        <span class="notifications-badge bg-danger text-white">
-                                                            <i class="material-icons-outlined">bolt</i>
-                                                        </span>
-                                                    </div>
-                                                    <div class="notifications-dropdown-item-text">
-                                                        <p class="bold-notifications-text">Quisque ligula dui, tincidunt nec pharetra eu, fringilla quis mauris</p>
-                                                        <small>18:00</small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#">
-                                                <div class="notifications-dropdown-item">
-                                                    <div class="notifications-dropdown-item-image">
-                                                        <span class="notifications-badge bg-success text-white">
-                                                            <i class="material-icons-outlined">alternate_email</i>
-                                                        </span>
-                                                    </div>
-                                                    <div class="notifications-dropdown-item-text">
-                                                        <p>Nulla id libero mattis justo euismod congue in et metus</p>
-                                                        <small>yesterday</small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#">
-                                                <div class="notifications-dropdown-item">
-                                                    <div class="notifications-dropdown-item-image">
-                                                        <span class="notifications-badge">
-                                                            <img src="../assets/images/avatars/avatar.png" alt="">
-                                                        </span>
-                                                    </div>
-                                                    <div class="notifications-dropdown-item-text">
-                                                        <p>Praesent sodales lobortis velit ac pellentesque</p>
-                                                        <small>yesterday</small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#">
-                                                <div class="notifications-dropdown-item">
-                                                    <div class="notifications-dropdown-item-image">
-                                                        <span class="notifications-badge">
-                                                            <img src="../assets/images/avatars/avatar.png" alt="">
-                                                        </span>
-                                                    </div>
-                                                    <div class="notifications-dropdown-item-text">
-                                                        <p>Praesent lacinia ante eget tristique mattis. Nam sollicitudin velit sit amet auctor porta</p>
-                                                        <small>yesterday</small>
-                                                    </div>
-                                                </div>
-                                            </a>
                                         </div>
                                     </div>
+                                </li>
+                                <li class="nav-item hidden-on-mobile">
+                                    <a class="nav-link language-dropdown-toggle font-weight-bold"
+                                       style="cursor: pointer;"
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                       id="languageDropDown"
+                                       data-bs-toggle="dropdown">Çıkış Yap
+                                        <i class="material-icons">logout</i>
+                                    </a>
+                                    <form action="{{ route("logout") }}" method="post" id="logout-form">
+                                        @csrf
+                                    </form>
+                                    <ul class="dropdown-menu dropdown-menu-end language-dropdown"
+                                        aria-labelledby="languageDropDown">
+                                        <li>
+                                            <a class="dropdown-item" href="#">Çıkış Yap</a>
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
                         </div>

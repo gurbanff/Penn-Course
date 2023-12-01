@@ -1,11 +1,11 @@
 <div class="app-sidebar">
             <div class="logo">
                 <a href="index.html" class="logo-icon"><span class="logo-text">Neptune</span></a>
-                <div class="sidebar-user-switcher user-activity-online">
+                <div class="sidebar-user-switcher user-activity-online mt-3">
                     <a href="#">
-                        <img src="../assets/images/avatars/avatar.png">
+                        <img src="{{ asset('assets/admin/images/avatars/avatar1.jpeg') }}">
                         <span class="activity-indicator"></span>
-                        <span class="user-info-text">Chloe<br><span class="user-state-info">open</span></span>
+                        <span class="user-info-text">{{ auth()->user()->name }}</span>
                     </a>
                 </div>
             </div>
