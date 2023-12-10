@@ -3,13 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Category;
+use App\Http\Requests\ArticleCreateReqeust;
+use App\Http\Requests\ArticleFilterRequest;
+use App\Http\Requests\ArticleUpdateRequest;
 use App\Models\Article;
+use App\Models\Category;
 use App\Models\User;
+use App\Models\UserLikeArticle;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use function PHPUnit\Framework\fileExists;
 
 class ArticleController extends Controller
 {
@@ -46,6 +52,11 @@ class ArticleController extends Controller
         return view("admin.articles.create-update", compact("article", "categories", "users"));
 
         dd($article);
+    }
+
+    public function update(AritcleUpdateRequest $request)
+    {
+        dd($request->all());
     }
 
     public function store(ArticleCreateReqeust $request)
