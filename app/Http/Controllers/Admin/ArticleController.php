@@ -54,7 +54,7 @@ class ArticleController extends Controller
         dd($article);
     }
 
-    public function update(AritcleUpdateRequest $request)
+    public function update(ArticleUpdateRequest $request)
     {
         dd($request->all());
     }

@@ -37,7 +37,7 @@
                                name="title"
                                id="title"
                                value="{{ isset($article) ? $article->title : '' }}"
-                               required
+                               {{--required--}}
                         >
 
                         @if($errors->has("title"))
@@ -51,7 +51,7 @@
                                name="slug"
                                id="slug"
                                value="{{ isset($article) ? $article->slug : '' }}"
-                               required
+                               {{--required--}}
                         >
 
                         <label class="form-label m-b-sm" for="tags">Etiketler</label>
@@ -61,7 +61,7 @@
                                name="tags"
                                id="tags"
                                value="{{ isset($article) ? $article->tags : '' }}"
-                               required
+                               {{--required--}}
                         >
 
                         <div class="form-text m-b-sm" id="tags">Herbir etiketi virgüllerle ayırarak yazın.</div>
